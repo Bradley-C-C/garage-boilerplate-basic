@@ -23,3 +23,11 @@ export function getUsersCollection() {
 export function userDoc(uid: string) {
   return doc(getUsersCollection(), uid)
 }
+
+export function getNotesCollection() {
+  return typedCollection<Note>('notes')
+}
+
+export function noteDoc(id: string) {
+  return doc(getNotesCollection(), id)
+}
