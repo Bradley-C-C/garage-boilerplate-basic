@@ -33,3 +33,15 @@ export interface Note {
   updatedAt: Timestamp
   _schemaVersion: 1
 }
+
+// Team Member Profile
+export interface TeamProfile {
+  id: string
+  uid: string
+  displayName: string | null
+  photoURL: string | null
+  role: string
+  blurb: string | null
+  createdAt: Timestamp
+  updatedAt: Timestamp
+}
