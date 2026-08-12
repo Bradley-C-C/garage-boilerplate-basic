@@ -38,10 +38,10 @@ export interface Note {
 export interface TeamProfile {
   id: string
   uid: string
-  displayName: string | null
+  displayName: string 
   photoURL: string | null
   role: string
-  blurb: string | null
+  blurb: string 
   createdAt: Timestamp
   updatedAt: Timestamp
 }

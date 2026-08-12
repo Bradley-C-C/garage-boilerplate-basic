@@ -32,10 +32,10 @@ export function noteDoc(id: string) {
   return doc(getNotesCollection(), id)
 }
 
-export function getTeamProfileCollection() {
+export function getTeamProfilesCollection() {
   return typedCollection<TeamProfile>('teamprofiles')
 }
 
 export function teamProfileDoc(id: string){
-  return doc(getTeamProfileCollection(), id)
+  return doc(getTeamProfilesCollection(), id)
 }

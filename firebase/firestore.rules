@@ -73,19 +73,50 @@ service cloud.firestore {
     }
 
     // teamprofiles/{profileId}
-    // Users can only read and write their own notes.
+    // Users can only read and write their own team profiles.
     match /teamprofiles/{profileId} {
-      allow read: if isAuthenticated() && isOwner(resource.data.uid) && notDeleted();
+      allow read: if isAuthenticated()
+        && isOwner(resource.data.uid)
+        && notDeleted();
 
-      allow create: if isAuthenticated() && isOwner(request.resource.data.uid)
-        && request.resource.data.keys().hasAll(['uid', 'displayName', 'blurb', 'createdAt', 'updatedAt', '_schemaVersion'])
-        && request.resource.data.keys().hasOnly(['uid', 'displayName', 'blurb', 'createdAt', 'updatedAt', '_schemaVersion']);
+      allow create: if isAuthenticated()
+        && isOwner(request.resource.data.uid)
+        && request.resource.data.keys().hasAll([
+          'uid',
+          'displayName',
+          'blurb',
+          'role',
+          'createdAt',
+          'updatedAt',
+          '_schemaVersion'
+        ])
+        && request.resource.data.keys().hasOnly([
+          'uid',
+          'displayName',
+          'photoURL',
+          'blurb',
+          'role',
+          'createdAt',
+          'updatedAt',
+          '_schemaVersion'
+        ]);
 
-      allow update: if isAuthenticated() && isOwner(resource.data.uid)
-        && request.resource.data.uid == resource.data.uid  // uid is immutable
-        && request.resource.data.keys().hasOnly(['uid', 'displayName', 'blurb', 'createdAt', 'updatedAt', 'deletedAt', '_schemaVersion']);
+      allow update: if isAuthenticated()
+        && isOwner(resource.data.uid)
+        && request.resource.data.uid == resource.data.uid
+        && request.resource.data.keys().hasOnly([
+          'uid',
+          'displayName',
+          'photoURL',
+          'blurb',
+          'role',
+          'createdAt',
+          'updatedAt',
+          'deletedAt',
+          '_schemaVersion'
+        ]);
 
-      allow delete: if false; // soft-delete only — set deletedAt instead
+      allow delete: if false;
     }
 
     // ── Default deny ───────────────────────────────────────────────────────
