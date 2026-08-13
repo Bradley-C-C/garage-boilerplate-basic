@@ -60,9 +60,7 @@ This enables **lazy migration** — when a document is read, check `_schemaVersi
 
 ---
 
-<!-- Add new collection schemas below -->
 
-<!-- TODO -->
 ---
 
 ## `teamprofiles` collection
