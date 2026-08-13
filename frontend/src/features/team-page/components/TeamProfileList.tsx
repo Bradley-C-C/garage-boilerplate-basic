@@ -20,8 +20,8 @@ export function TeamProfileList() {
 function TeamProfileListContent({ uid }: { uid: string }) {
   const { data: profiles, loading } = useCollection(
     getTeamProfilesCollection(),
-    where('uid', '==', uid)
   )
+
 
   if (loading) return <LoadingSpinner />
 
