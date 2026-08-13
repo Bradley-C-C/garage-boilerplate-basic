@@ -8,7 +8,7 @@ import type { ActionResult } from '@/types'
 
 const createTeamProfileSchema = z.object({
   displayName: z.string().min(1).max(200),
-  photoURL: z.string().min(1).max(300),
+  photoURL: z.string().nullable(),
   blurb: z.string().max(10_000),
   role: z.string().min(1).max(10)
 })
