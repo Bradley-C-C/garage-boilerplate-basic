@@ -60,4 +60,23 @@ This enables **lazy migration** — when a document is read, check `_schemaVersi
 
 ---
 
-<!-- Add new collection schemas below -->
+
+---
+
+## `teamprofiles` collection
+
+**Path:** `/teamprofiles/{teamprofileId}`
+**Access:** Owner-only
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| `uid` | `string` | Yes | Team Profile Auth UID |
+| `displayName` | `string` | Yes | display Name (1–200 chars) |
+| `photoURL` | `string \| null` | No |\ URL of the team member's profile photo |
+| `blurb` | `string` | Yes | blurb (≤10 000 chars) |
+| `role` | `string` | No | role (≤4 chars) |
+| `createdAt` | `Timestamp` | Yes | Creation time |
+| `updatedAt` | `Timestamp` | Yes | Last update time |
+| `_schemaVersion` | `1` | Yes | Schema version for lazy migration |
+
+---
